@@ -1,3 +1,4 @@
+import { Tilemaps } from 'phaser';
 import { NumericLiteral, ParenthesizedExpression } from 'typescript';
 import EnemySprite from '../objects/EnemySprite';
 
@@ -24,6 +25,7 @@ export default class MainScene extends Phaser.Scene {
 
     // Add collision
     platforms.setCollisionByProperty({ collides: true });
+    // this.yoo.setCollideWorldBounds(true);
 
     this.yoo = this.physics.add.sprite(320, 208, 'main-character');
     this.anims.create({
@@ -54,15 +56,19 @@ export default class MainScene extends Phaser.Scene {
       frameRate: 15,
     });
 
-    // this.physics.world.setBounds(0, 0, background.width, background.height, )
+    // this.physics.world.setBounds(800, 600, background.width, background.height, )
 
     this.enemy1 = new EnemySprite(this, 700, 300, 'eliou');
+    this.enemy1.body.setSize(this.enemy1.width * 0.8, this.enemy1.height * 0.8);
     // this.enemy2 = new EnemySprite(this, 100, 200, 'ghuds');
 
     this.physics.add.collider(this.yoo, platforms);
     this.physics.add.collider(this.enemy1, platforms);
     // this.physics.add.collider(this.enemy2, platforms);
-    this.physics.add.collider(this.yoo);
+    // this.physics.add.collider(this.yoo,);
+
+    this.cameras.main.startFollow(this.yoo, true);
+    this.cameras.main.zoom = 2.0;
   }
 
   update(t: number, dt: number) {
