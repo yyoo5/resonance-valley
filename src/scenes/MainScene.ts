@@ -1,18 +1,23 @@
 import { Tilemaps } from 'phaser';
-import { NumericLiteral, ParenthesizedExpression } from 'typescript';
 import EnemySprite from '../objects/EnemySprite';
+import YooSprite from '../objects/YooSprite';
 
 export default class MainScene extends Phaser.Scene {
-  platforms!: Phaser.GameObjects.Image;
-  yoo!: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
-  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
+  // private platforms!: Phaser.GameObjects.Image;
+  // yoo!: Phaser.Types.Physics.Arcade.Sprite;
+  // private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
+
+  // private speed = 100;
+  private yoo!: YooSprite;
+  private platforms!: Tilemaps.TilemapLayer;
+  private enemy1!: EnemySprite;
 
   constructor() {
     super({ key: 'MainScene' });
   }
 
   preload() {
-    this.cursors = this.input.keyboard.createCursorKeys();
+    // this.cursors = this.input.keyboard.createCursorKeys();
   }
 
   create() {
@@ -21,71 +26,44 @@ export default class MainScene extends Phaser.Scene {
 
     const map = this.make.tilemap({ key: 'level-1' });
     const tileset = map.addTilesetImage('tileset', 'tiles', 32, 32, 0, 0);
-    const platforms = map.createLayer('platforms', tileset);
+    this.platforms = map.createLayer('platforms', tileset);
+
+    this.cameras.main.setBounds(0, 0, 800, 640);
+    this.physics.world.setBounds(0, 0, 800, 640);
 
     // Add collision
-    platforms.setCollisionByProperty({ collides: true });
-    // this.yoo.setCollideWorldBounds(true);
+    this.platforms.setCollisionByProperty({ collides: true });
 
-    this.yoo = this.physics.add.sprite(320, 208, 'main-character');
-    this.anims.create({
-      key: 'yoo-idle-right',
-      frames: [{ key: 'main-character', frame: '1' }],
-    });
-    this.anims.create({
-      key: 'yoo-idle-left',
-      frames: [{ key: 'main-character', frame: '6' }],
-    });
-    this.anims.create({
-      key: 'yoo-walk-right',
-      frames: this.anims.generateFrameNames('main-character', {
-        start: 7,
-        end: 12,
-      }),
-      repeat: -1,
-      frameRate: 15,
-    });
+    // Add main character and animation
+    // this.yoo = this.physics.add.sprite(320, 208, 'main-character');
+    this.yoo = new YooSprite(this, 320, 208);
 
-    this.anims.create({
-      key: 'yoo-walk-left',
-      frames: this.anims.generateFrameNames('main-character', {
-        start: 6,
-        end: 1,
-      }),
-      repeat: -1,
-      frameRate: 15,
-    });
-
-    // this.physics.world.setBounds(800, 600, background.width, background.height, )
-
+    // Add Eliou
     this.enemy1 = new EnemySprite(this, 700, 300, 'eliou');
     this.enemy1.body.setSize(this.enemy1.width * 0.8, this.enemy1.height * 0.8);
     // this.enemy2 = new EnemySprite(this, 100, 200, 'ghuds');
 
-    this.physics.add.collider(this.yoo, platforms);
-    this.physics.add.collider(this.enemy1, platforms);
+    //Add collision
+    this.physics.add.collider(this.yoo, this.platforms);
+    this.physics.add.collider(this.enemy1, this.platforms);
     // this.physics.add.collider(this.enemy2, platforms);
     // this.physics.add.collider(this.yoo,);
 
+    //Add Camera and zoom
     this.cameras.main.startFollow(this.yoo, true);
     this.cameras.main.zoom = 2.0;
   }
 
-  update(t: number, dt: number) {
-    if (!this.cursors || !this.yoo) {
-      return;
-    }
-    const speed = 100;
-    if (this.cursors.left.isDown) {
-      this.yoo.anims.play('yoo-walk-left', true);
-      this.yoo.setVelocity(-speed, 0);
-    } else if (this.cursors.right.isDown) {
-      this.yoo.anims.play('yoo-walk-right', true);
-      this.yoo.setVelocity(speed, 0);
-    } else {
-      this.yoo.play('yoo-idle-right');
-      // this.yoo.play('yoo-idle-left');
-      this.yoo.setVelocity(0, 0);
-    }
-  }
+  // update(): void {
+  //   if (this.cursors.left.isDown) {
+  //     this.yoo.setVelocityX(-this.speed);
+  //   } else if (this.cursors.right.isDown) {
+  //     this.yoo.setVelocityX(this.speed);
+  //   } else {
+  //     // console.log('else');
+  //     this.yoo.setVelocityX(0);
+  //   }
+  // }
+
+  update() {}
 }
