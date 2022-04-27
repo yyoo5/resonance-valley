@@ -29,7 +29,7 @@ export default class StarSprite extends Phaser.Physics.Arcade.Sprite {
         start: 1,
         end: 8,
       }),
-      frameRate: 3,
+      frameRate: 5,
       repeat: -1,
     });
   }

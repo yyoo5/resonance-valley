@@ -28,27 +28,33 @@ export default class YooSprite extends Phaser.Physics.Arcade.Sprite {
       this.setVelocityX(-this.speed);
 
       this.direction = 'left';
-      console.log('left: ', this.direction);
     } else if (this.cursors.right.isDown) {
       this.anims.play('yoo-walk-right', true);
       this.setVelocityX(this.speed);
 
       this.direction = 'right';
-      console.log('right: ', this.direction);
     } else {
-      console.log('else: ', `yoo-idle-${this.direction}`);
       this.anims.play(`yoo-idle-${this.direction}`, true);
       this.setVelocityX(0);
     }
-    if (this.cursors.up.isDown && this.body.touching.down) {
-      // this.setVelocityY(-210);
+
+    // console.log(this.body.blocked.down);
+
+    if (this.cursors.up.isDown && this.body.blocked.down) {
+      this.setVelocityY(-210);
     }
+    // if (this.cursors.up.isDown) {
+    //   this.setVelocityY(-210);
+    // }
   }
 
   private makeAnimations() {
     this.anims.create({
       key: 'yoo-idle-right',
       frames: this.anims.generateFrameNames('main-character', {
+        // prefix: 'yoo-walk-right-',
+        // start: 1,
+        // end: 5,
         start: 7,
         end: 7,
       }),

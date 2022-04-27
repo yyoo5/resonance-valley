@@ -5,6 +5,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
   preload() {
     this.load.image('background', 'assets/img/background/background.png');
+    this.load.image('vision', 'assets/img/fog/vision.png');
 
     this.load.atlas(
       'main-character',
