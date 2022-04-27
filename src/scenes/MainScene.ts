@@ -1,6 +1,7 @@
 import { Tilemaps } from 'phaser';
 import EnemySprite from '../objects/EnemySprite';
 import YooSprite from '../objects/YooSprite';
+import StarSprite from '../objects/StarSprite';
 
 export default class MainScene extends Phaser.Scene {
   // private platforms!: Phaser.GameObjects.Image;
@@ -11,6 +12,7 @@ export default class MainScene extends Phaser.Scene {
   private yoo!: YooSprite;
   private platforms!: Tilemaps.TilemapLayer;
   private enemy1!: EnemySprite;
+  private star!: StarSprite;
 
   constructor() {
     super({ key: 'MainScene' });
@@ -43,27 +45,20 @@ export default class MainScene extends Phaser.Scene {
     this.enemy1.body.setSize(this.enemy1.width * 0.8, this.enemy1.height * 0.8);
     // this.enemy2 = new EnemySprite(this, 100, 200, 'ghuds');
 
+    // Add Star
+    this.star = new StarSprite(this, 300, 400, 'star');
+
     //Add collision
     this.physics.add.collider(this.yoo, this.platforms);
     this.physics.add.collider(this.enemy1, this.platforms);
+    this.physics.add.collider(this.star, this.platforms);
     // this.physics.add.collider(this.enemy2, platforms);
     // this.physics.add.collider(this.yoo,);
 
     //Add Camera and zoom
     this.cameras.main.startFollow(this.yoo, true);
-    this.cameras.main.zoom = 2.0;
+    // this.cameras.main.zoom = 2.0;
   }
-
-  // update(): void {
-  //   if (this.cursors.left.isDown) {
-  //     this.yoo.setVelocityX(-this.speed);
-  //   } else if (this.cursors.right.isDown) {
-  //     this.yoo.setVelocityX(this.speed);
-  //   } else {
-  //     // console.log('else');
-  //     this.yoo.setVelocityX(0);
-  //   }
-  // }
 
   update() {}
 }

@@ -40,6 +40,9 @@ export default class YooSprite extends Phaser.Physics.Arcade.Sprite {
       this.anims.play(`yoo-idle-${this.direction}`, true);
       this.setVelocityX(0);
     }
+    if (this.cursors.up.isDown && this.body.touching.down) {
+      // this.setVelocityY(-210);
+    }
   }
 
   private makeAnimations() {

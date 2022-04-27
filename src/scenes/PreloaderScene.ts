@@ -9,7 +9,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.atlas(
       'main-character',
       'assets/img/main-character/main-character.png',
-      'assets/img/main-character/main-character.json',
+      'assets/img/main-character/main-character.json'
     );
     this.load.atlas(
       'ghuds',
@@ -20,6 +20,11 @@ export default class PreloaderScene extends Phaser.Scene {
       'eliou',
       'assets/img/eliou/eliou.png',
       'assets/img/eliou/eliou.json'
+    );
+    this.load.atlas(
+      'star',
+      'assets/img/star/star.png',
+      'assets/img/star/star.json'
     );
     this.load.image('tiles', 'assets/img/tiles/tileset.png');
     this.load.tilemapTiledJSON('level-1', 'assets/img/tiles/level-1.json');
