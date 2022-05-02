@@ -12,8 +12,9 @@ export default class PreloaderScene extends Phaser.Scene {
     );
     this.load.image('title', 'assets/img/title/title.png');
     this.load.image('start', 'assets/img/title/start.png');
+    this.load.image('author', 'assets/img/title/author.png');
 
-    this.load.audio('bgm', 'assets/audio/bgm.mp3');
+    this.load.audio('background-music', 'assets/audio/bgm.mp3');
 
     //loading bar
     let loadingBar = this.add.graphics({
