@@ -5,6 +5,7 @@ import CreditScene from './scenes/CreditScene';
 import MainScene from './scenes/MainScene';
 import PreloaderScene from './scenes/PreloaderScene';
 import ControlScene from './scenes/ControlScene';
+import SettingsScene from './scenes/SettingsScene';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -24,6 +25,7 @@ const config: Phaser.Types.Core.GameConfig = {
     ControlScene,
     CreditScene,
     MainScene,
+    SettingsScene,
   ],
   render: {
     pixelArt: true,
