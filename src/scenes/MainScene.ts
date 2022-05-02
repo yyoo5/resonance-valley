@@ -27,8 +27,6 @@ export default class MainScene extends Phaser.Scene {
     this.add.image(400, 320, 'background');
     this.add.image(200, 200, 'vision');
 
-    let jumpSound = game.sound.add('jump');
-
     const map = this.make.tilemap({ key: 'level-1' });
     const tileset = map.addTilesetImage('tileset', 'tiles', 32, 32, 0, 0);
     this.platforms = map.createLayer('platforms', tileset);
@@ -64,6 +62,12 @@ export default class MainScene extends Phaser.Scene {
     //   undefined,
     //   this
     // );
+
+    //add music
+    this.sound.play('background-music', {
+      loop: true,
+      volume: 0.25,
+    });
 
     //Add collision
     this.physics.add.collider(this.yoo, this.platforms);

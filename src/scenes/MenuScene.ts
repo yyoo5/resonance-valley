@@ -41,11 +41,11 @@ export default class SecondScene extends Phaser.Scene {
     hoverImageCredit.setScale(0.75);
     hoverImageCredit.setVisible(false);
 
-    //add music
-    this.sound.play('background-music', {
-      loop: true,
-      volume: 0.25,
-    });
+    // //add music
+    // this.sound.play('background-music', {
+    //   loop: true,
+    //   volume: 0.25,
+    // });
 
     //pointer events
     //pointerover - hovering
