@@ -2,6 +2,7 @@ import { Tilemaps } from 'phaser';
 import EnemySprite from '../objects/EnemySprite';
 import YooSprite from '../objects/YooSprite';
 import StarSprite from '../objects/StarSprite';
+import SettingsScene from './SettingsScene';
 
 export default class MainScene extends Phaser.Scene {
   private yoo!: YooSprite;
@@ -19,6 +20,8 @@ export default class MainScene extends Phaser.Scene {
   create() {
     this.add.image(400, 320, 'background');
     this.add.image(200, 200, 'vision');
+
+    this.scene.launch('SettingsScene');
 
     const map = this.make.tilemap({ key: 'level-1' });
     const tileset = map.addTilesetImage('tileset', 'tiles', 32, 32, 0, 0);
@@ -54,7 +57,7 @@ export default class MainScene extends Phaser.Scene {
     const width = this.scale.width;
     const height = this.scale.height;
 
-    //add fog of war
+    // //add fog of war
     const rt = this.make.renderTexture({ width, height }, true);
     rt.fill(0x000000, 1);
 
