@@ -13,28 +13,11 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('title', 'assets/img/title/title.png');
     this.load.image('start', 'assets/img/title/start.png');
     this.load.image('author', 'assets/img/title/author.png');
+    this.load.image('credits-button', 'assets/img/title/credits-button.png');
+    this.load.image('credits', 'assets/img/title/credits.png');
+    this.load.image('home', 'assets/img/title/home.png');
 
     this.load.audio('background-music', 'assets/audio/bgm.mp3');
-
-    //loading bar
-    let loadingBar = this.add.graphics({
-      fillStyle: {
-        color: 0xffffff, //white
-      },
-    });
-
-    // //simulate large loading
-    // for (let i = 0; i < 100; i++)
-
-    this.load.on('progress', (percent) => {
-      loadingBar.fillRect(
-        0,
-        this.game.renderer.height / 2,
-        this.game.renderer.width * percent,
-        50
-      );
-      console.log(percent);
-    });
 
     this.load.atlas(
       'main-character',

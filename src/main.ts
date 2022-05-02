@@ -1,5 +1,6 @@
 import 'phaser';
 import MenuScene from './scenes/MenuScene';
+import CreditScene from './scenes/CreditScene';
 import MainScene from './scenes/MainScene';
 import PreloaderScene from './scenes/PreloaderScene';
 
@@ -14,7 +15,7 @@ const config: Phaser.Types.Core.GameConfig = {
       debug: true,
     },
   },
-  scene: [PreloaderScene, MenuScene, MainScene],
+  scene: [PreloaderScene, MenuScene, CreditScene, MainScene],
   render: {
     pixelArt: true,
   },

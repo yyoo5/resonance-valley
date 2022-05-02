@@ -22,12 +22,24 @@ export default class SecondScene extends Phaser.Scene {
         'start'
       )
       .setDepth(0);
+
+    let creditButton = this.add
+      .image(
+        this.game.renderer.width / 2,
+        this.game.renderer.height / 1.25,
+        'credits-button'
+      )
+      .setDepth(0);
     this.add.image(400, 600, 'author');
 
     //add hover indicator
-    let hoverImage = this.add.image(250, 425, 'star');
-    hoverImage.setScale(1.2);
-    hoverImage.setVisible(false);
+    let hoverImagePlay = this.add.image(250, 425, 'star');
+    hoverImagePlay.setScale(1.2);
+    hoverImagePlay.setVisible(false);
+
+    let hoverImageCredit = this.add.image(300, 510, 'star');
+    hoverImageCredit.setScale(0.75);
+    hoverImageCredit.setVisible(false);
 
     //add music
     this.sound.play('background-music', {
@@ -41,20 +53,41 @@ export default class SecondScene extends Phaser.Scene {
     //pointerup - click and release
     //pointerdown - just click
 
+    //Main Scene
     playButton.setInteractive();
     playButton.on('pointerover', () => {
-      hoverImage.setVisible(true);
+      hoverImagePlay.setVisible(true);
     });
 
     playButton.on('pointerout', () => {
-      hoverImage.setVisible(false);
+      hoverImagePlay.setVisible(false);
     });
 
     playButton.on('pointerup', () => {
-      console.log('click and release');
+      // console.log('click and release');
+      this.scene.start('MainScene');
     });
 
     playButton.on('pointerdown', () => {
+      console.log('just click');
+    });
+
+    // Credit Scene
+    creditButton.setInteractive();
+    creditButton.on('pointerover', () => {
+      hoverImageCredit.setVisible(true);
+    });
+
+    creditButton.on('pointerout', () => {
+      hoverImageCredit.setVisible(false);
+    });
+
+    creditButton.on('pointerup', () => {
+      // console.log('click and release');
+      this.scene.start('CreditScene');
+    });
+
+    creditButton.on('pointerdown', () => {
       console.log('just click');
     });
   }
