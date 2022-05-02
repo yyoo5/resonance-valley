@@ -41,7 +41,7 @@ export default class YooSprite extends Phaser.Physics.Arcade.Sprite {
     // console.log(this.body.blocked.down);
 
     if (this.cursors.up.isDown && this.body.blocked.down) {
-      this.setVelocityY(-210);
+      this.setVelocityY(-240);
     }
     // if (this.cursors.up.isDown) {
     //   this.setVelocityY(-210);

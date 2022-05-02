@@ -38,27 +38,40 @@ export default class MainScene extends Phaser.Scene {
     this.platforms.setCollisionByProperty({ collides: true });
 
     // Add main character and animation
-    // this.yoo = this.physics.add.sprite(320, 208, 'main-character');
     this.yoo = new YooSprite(this, 200, 600);
 
     // Add Eliou
     this.enemy1 = new EnemySprite(this, 700, 300, 'eliou');
     this.enemy1.body.setSize(this.enemy1.width * 0.8, this.enemy1.height * 0.8);
-    // this.enemy2 = new EnemySprite(this, 100, 200, 'ghuds');
 
     // Add Star
     this.star = new StarSprite(this, 200, 80, 'star');
+    // this.star = this.physics.add.group({
+    //   classType: StarSprite,
+    // });
+    // this.star.get(200, 80);
+    // this.star.get(400, 80);
+    // this.star.get(500, 100);
+    // this.star.get(640, 200);
+
+    // // collect star
+    // this.physics.add.overlap(
+    //   this.yoo,
+    //   this.star,
+    //   this.collectStar,
+    //   undefined,
+    //   this
+    // );
 
     //Add collision
     this.physics.add.collider(this.yoo, this.platforms);
     this.physics.add.collider(this.enemy1, this.platforms);
     this.physics.add.collider(this.star, this.platforms);
-    // this.physics.add.collider(this.enemy2, platforms);
-    // this.physics.add.collider(this.yoo,);
 
     const width = this.scale.width;
     const height = this.scale.height;
 
+    //add fog of war
     // make a RenderTexture that is the size of the screen
     const rt = this.make.renderTexture({ width, height }, true);
 
@@ -67,8 +80,6 @@ export default class MainScene extends Phaser.Scene {
 
     // draw the floorLayer into it
     rt.draw(this.platforms);
-
-    // TODO: Do we need to add the background layer to rt.draw() too?
 
     // set a dark blue tint
     rt.setTint(0x0a2948);
@@ -90,9 +101,19 @@ export default class MainScene extends Phaser.Scene {
   }
 
   update() {
-    if (this.vision) {
-      this.vision.x = this.yoo.x;
-      this.vision.y = this.yoo.y;
-    }
+    // if (this.vision) {
+    //   this.vision.x = this.yoo.x;
+    //   this.vision.y = this.yoo.y;
   }
+
+  //   //collecting stars and destroying it
+  //   private collectStar(
+  //     _yoo: Phaser.GameObjects.GameObject,
+  //     star: Phaser.GameObjects.GameObject
+  //   ) {
+  //     console.log(this.events);
+  //     this.events.emit('starPickedUp');
+
+  //     star.destroy();
+  //   }
 }

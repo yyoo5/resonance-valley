@@ -1,5 +1,6 @@
 export default class StarSprite extends Phaser.Physics.Arcade.Sprite {
   star: string | Phaser.Textures.Texture;
+  children: any;
 
   constructor(
     scene: Phaser.Scene,
