@@ -14,6 +14,7 @@ export default class MainScene extends Phaser.Scene {
   private platforms!: Tilemaps.TilemapLayer;
   private enemy1!: EnemySprite;
   private star!: StarSprite;
+  vision!: Phaser.GameObjects.Image;
 
   constructor() {
     super({ key: 'MainScene' });
@@ -91,15 +92,15 @@ export default class MainScene extends Phaser.Scene {
     // set a dark blue tint [DISABLE THIS WHEN FOG OF WAR FOLLOWS PLAYER]
     rt.setTint(0x0a2948);
 
-    const vision = this.make.image({
+    this.vision = this.make.image({
       x: this.yoo.x,
       y: this.yoo.y,
       key: 'vision',
       add: false,
     });
-    vision.scale = 1.5;
+    this.vision.scale = 1.5;
 
-    rt.mask = new Phaser.Display.Masks.BitmapMask(this, vision);
+    rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision);
     rt.mask.invertAlpha = true;
 
     //Add Camera and zoom
@@ -110,19 +111,20 @@ export default class MainScene extends Phaser.Scene {
   }
 
   update() {
-    // if (this.vision) {
-    //   this.vision.x = this.yoo.x;
-    //   this.vision.y = this.yoo.y;
+    if (this.vision) {
+      this.vision.x = this.yoo.x;
+      this.vision.y = this.yoo.y;
+    }
+
+    //   //collecting stars and destroying it
+    //   private collectStar(
+    //     _yoo: Phaser.GameObjects.GameObject,
+    //     star: Phaser.GameObjects.GameObject
+    //   ) {
+    //     console.log(this.events);
+    //     this.events.emit('starPickedUp');
+
+    //     star.destroy();
+    //   }
   }
-
-  //   //collecting stars and destroying it
-  //   private collectStar(
-  //     _yoo: Phaser.GameObjects.GameObject,
-  //     star: Phaser.GameObjects.GameObject
-  //   ) {
-  //     console.log(this.events);
-  //     this.events.emit('starPickedUp');
-
-  //     star.destroy();
-  //   }
 }
