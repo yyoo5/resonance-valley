@@ -17,7 +17,6 @@ export default class MainScene extends Phaser.Scene {
   preload() {}
 
   create() {
-    console.log(this.game.config.width);
     this.add.image(400, 320, 'background');
     this.add.image(200, 200, 'vision');
 
