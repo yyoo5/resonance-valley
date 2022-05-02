@@ -87,10 +87,10 @@ export default class MainScene extends Phaser.Scene {
     rt.fill(0x000000, 1);
 
     // draw the floorLayer into it
-    rt.draw(this.platforms);
+    // rt.draw(this.platforms);
 
     // set a dark blue tint [DISABLE THIS WHEN FOG OF WAR FOLLOWS PLAYER]
-    rt.setTint(0x0a2948);
+    // rt.setTint(0x0a2948);
 
     this.vision = this.make.image({
       x: this.yoo.x,
