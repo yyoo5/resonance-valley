@@ -2,6 +2,7 @@ import { Tilemaps } from 'phaser';
 import EnemySprite from '../objects/EnemySprite';
 import YooSprite from '../objects/YooSprite';
 import StarSprite from '../objects/StarSprite';
+import { visitNode } from 'typescript';
 
 export default class MainScene extends Phaser.Scene {
   // private platforms!: Phaser.GameObjects.Image;

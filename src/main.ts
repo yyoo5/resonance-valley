@@ -1,8 +1,10 @@
 import 'phaser';
 import MenuScene from './scenes/MenuScene';
+import StoryScene from './scenes/StoryScene';
 import CreditScene from './scenes/CreditScene';
 import MainScene from './scenes/MainScene';
 import PreloaderScene from './scenes/PreloaderScene';
+import ControlScene from './scenes/ControlScene';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -15,7 +17,14 @@ const config: Phaser.Types.Core.GameConfig = {
       debug: true,
     },
   },
-  scene: [PreloaderScene, MenuScene, CreditScene, MainScene],
+  scene: [
+    PreloaderScene,
+    MenuScene,
+    StoryScene,
+    ControlScene,
+    CreditScene,
+    MainScene,
+  ],
   render: {
     pixelArt: true,
   },

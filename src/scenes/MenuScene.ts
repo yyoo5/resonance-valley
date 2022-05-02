@@ -65,7 +65,7 @@ export default class SecondScene extends Phaser.Scene {
 
     playButton.on('pointerup', () => {
       // console.log('click and release');
-      this.scene.start('MainScene');
+      this.scene.start('StoryScene');
     });
 
     playButton.on('pointerdown', () => {
