@@ -27,6 +27,8 @@ export default class MainScene extends Phaser.Scene {
     this.add.image(400, 320, 'background');
     this.add.image(200, 200, 'vision');
 
+    let jumpSound = game.sound.add('jump');
+
     const map = this.make.tilemap({ key: 'level-1' });
     const tileset = map.addTilesetImage('tileset', 'tiles', 32, 32, 0, 0);
     this.platforms = map.createLayer('platforms', tileset);
@@ -98,6 +100,8 @@ export default class MainScene extends Phaser.Scene {
     //Add Camera and zoom
     this.cameras.main.startFollow(this.yoo, true);
     this.cameras.main.zoom = 2.0;
+
+    //add sound effect
   }
 
   update() {

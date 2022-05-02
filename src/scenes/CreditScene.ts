@@ -59,5 +59,5 @@ export default class CreditScene extends Phaser.Scene {
       console.log('just click');
     });
   }
-  update(time: number, delta: number): void {}
+  update() {}
 }

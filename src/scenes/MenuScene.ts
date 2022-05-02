@@ -91,5 +91,5 @@ export default class SecondScene extends Phaser.Scene {
       console.log('just click');
     });
   }
-  update(time: number, delta: number): void {}
+  update() {}
 }

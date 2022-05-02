@@ -18,6 +18,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('home', 'assets/img/title/home.png');
 
     this.load.audio('background-music', 'assets/audio/bgm.mp3');
+    this.load.audio('jump', 'assets/audio/jump.wav');
 
     this.load.atlas(
       'main-character',
