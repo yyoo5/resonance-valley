@@ -48,7 +48,6 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   create() {
-    // this.scene.start('MainScene');
     this.scene.start('MenuScene');
   }
 }

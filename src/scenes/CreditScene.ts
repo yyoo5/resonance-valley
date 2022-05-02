@@ -29,18 +29,6 @@ export default class CreditScene extends Phaser.Scene {
     hoverImage.setScale(0.75);
     hoverImage.setVisible(false);
 
-    //add music
-    // this.sound.play('background-music', {
-    //   loop: true,
-    //   volume: 0.25,
-    // });
-
-    //pointer events
-    //pointerover - hovering
-    //pointerout - not hovering
-    //pointerup - click and release
-    //pointerdown - just click
-
     backButton.setInteractive();
     backButton.on('pointerover', () => {
       hoverImage.setVisible(true);
@@ -51,13 +39,10 @@ export default class CreditScene extends Phaser.Scene {
     });
 
     backButton.on('pointerup', () => {
-      // console.log('click and release');
       this.scene.start('MenuScene');
     });
 
-    backButton.on('pointerdown', () => {
-      console.log('just click');
-    });
+    backButton.on('pointerdown', () => {});
   }
   update() {}
 }

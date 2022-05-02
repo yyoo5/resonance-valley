@@ -28,18 +28,6 @@ export default class ControlScene extends Phaser.Scene {
     hoverImage.setScale(0.75);
     hoverImage.setVisible(false);
 
-    //add music
-    // this.sound.play('background-music', {
-    //   loop: true,
-    //   volume: 0.25,
-    // });
-
-    //pointer events
-    //pointerover - hovering
-    //pointerout - not hovering
-    //pointerup - click and release
-    //pointerdown - just click
-
     nextButton.setInteractive();
     nextButton.on('pointerover', () => {
       hoverImage.setVisible(true);
@@ -50,13 +38,10 @@ export default class ControlScene extends Phaser.Scene {
     });
 
     nextButton.on('pointerup', () => {
-      // console.log('click and release');
       this.scene.start('MainScene');
     });
 
-    nextButton.on('pointerdown', () => {
-      console.log('just click');
-    });
+    nextButton.on('pointerdown', () => {});
   }
   update() {}
 }

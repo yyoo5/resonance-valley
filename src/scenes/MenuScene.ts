@@ -41,18 +41,6 @@ export default class SecondScene extends Phaser.Scene {
     hoverImageCredit.setScale(0.75);
     hoverImageCredit.setVisible(false);
 
-    // //add music
-    // this.sound.play('background-music', {
-    //   loop: true,
-    //   volume: 0.25,
-    // });
-
-    //pointer events
-    //pointerover - hovering
-    //pointerout - not hovering
-    //pointerup - click and release
-    //pointerdown - just click
-
     //Main Scene
     playButton.setInteractive();
     playButton.on('pointerover', () => {
@@ -83,13 +71,10 @@ export default class SecondScene extends Phaser.Scene {
     });
 
     creditButton.on('pointerup', () => {
-      // console.log('click and release');
       this.scene.start('CreditScene');
     });
 
-    creditButton.on('pointerdown', () => {
-      console.log('just click');
-    });
+    creditButton.on('pointerdown', () => {});
   }
   update() {}
 }

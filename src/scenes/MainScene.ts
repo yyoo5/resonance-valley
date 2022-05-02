@@ -2,14 +2,8 @@ import { Tilemaps } from 'phaser';
 import EnemySprite from '../objects/EnemySprite';
 import YooSprite from '../objects/YooSprite';
 import StarSprite from '../objects/StarSprite';
-import { visitNode } from 'typescript';
 
 export default class MainScene extends Phaser.Scene {
-  // private platforms!: Phaser.GameObjects.Image;
-  // yoo!: Phaser.Types.Physics.Arcade.Sprite;
-  // private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
-
-  // private speed = 100;
   private yoo!: YooSprite;
   private platforms!: Tilemaps.TilemapLayer;
   private enemy1!: EnemySprite;
@@ -20,9 +14,7 @@ export default class MainScene extends Phaser.Scene {
     super({ key: 'MainScene' });
   }
 
-  preload() {
-    // this.cursors = this.input.keyboard.createCursorKeys();
-  }
+  preload() {}
 
   create() {
     console.log(this.game.config.width);
@@ -48,22 +40,6 @@ export default class MainScene extends Phaser.Scene {
 
     // Add Star
     this.star = new StarSprite(this, 200, 80, 'star');
-    // this.star = this.physics.add.group({
-    //   classType: StarSprite,
-    // });
-    // this.star.get(200, 80);
-    // this.star.get(400, 80);
-    // this.star.get(500, 100);
-    // this.star.get(640, 200);
-
-    // // collect star
-    // this.physics.add.overlap(
-    //   this.yoo,
-    //   this.star,
-    //   this.collectStar,
-    //   undefined,
-    //   this
-    // );
 
     //add music
     this.sound.play('background-music', {
@@ -80,17 +56,8 @@ export default class MainScene extends Phaser.Scene {
     const height = this.scale.height;
 
     //add fog of war
-    // make a RenderTexture that is the size of the screen
     const rt = this.make.renderTexture({ width, height }, true);
-
-    // fill it with black
     rt.fill(0x000000, 1);
-
-    // draw the floorLayer into it
-    // rt.draw(this.platforms);
-
-    // set a dark blue tint [DISABLE THIS WHEN FOG OF WAR FOLLOWS PLAYER]
-    // rt.setTint(0x0a2948);
 
     this.vision = this.make.image({
       x: this.yoo.x,
@@ -115,16 +82,5 @@ export default class MainScene extends Phaser.Scene {
       this.vision.x = this.yoo.x;
       this.vision.y = this.yoo.y;
     }
-
-    //   //collecting stars and destroying it
-    //   private collectStar(
-    //     _yoo: Phaser.GameObjects.GameObject,
-    //     star: Phaser.GameObjects.GameObject
-    //   ) {
-    //     console.log(this.events);
-    //     this.events.emit('starPickedUp');
-
-    //     star.destroy();
-    //   }
   }
 }
