@@ -10,6 +10,8 @@ export default class MainScene extends Phaser.Scene {
   private enemy1!: EnemySprite;
   private star!: StarSprite;
   vision!: Phaser.GameObjects.Image;
+  visionstar!: Phaser.GameObjects.Image;
+  starCollected: boolean = false;
 
   constructor() {
     super({ key: 'MainScene' });
@@ -53,29 +55,58 @@ export default class MainScene extends Phaser.Scene {
     this.physics.add.collider(this.enemy1, this.platforms);
     this.physics.add.collider(this.star, this.platforms);
 
-    const width = this.scale.width;
-    const height = this.scale.height;
+    // Overlap
+    this.physics.add.overlap(this.yoo, this.star, this.collectStar, null, this);
+    this.physics.add.overlap(
+      this.yoo,
+      this.enemy1,
+      this.touchEnemy,
+      null,
+      this
+    );
+
+    // const width = this.scale.width;
+    // const height = this.scale.height;
 
     // //add fog of war
-    const rt = this.make.renderTexture({ width, height }, true);
-    rt.fill(0x000000, 1);
+    // const rt = this.make.renderTexture({ width, height }, true);
+    // rt.fill(0x000000, 1);
 
-    this.vision = this.make.image({
-      x: this.yoo.x,
-      y: this.yoo.y,
-      key: 'vision',
-      add: false,
-    });
-    this.vision.scale = 1.5;
+    // this.vision = this.make.image({
+    //   x: this.yoo.x,
+    //   y: this.yoo.y,
+    //   key: 'vision',
+    //   add: false,
+    // });
+    // this.vision.scale = 1.5;
 
-    rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision);
-    rt.mask.invertAlpha = true;
+    // rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision);
+    // rt.mask.invertAlpha = true;
 
     //Add Camera and zoom
     this.cameras.main.startFollow(this.yoo, true);
     this.cameras.main.zoom = 1.5;
 
     //add sound effect
+  }
+  touchEnemy(yoo: YooSprite, enemy1: EnemySprite) {
+    if (this.starCollected === true) {
+      // TODO: Display you won
+      console.log('Display you won');
+    } else {
+      // TODO: Display a message to tell the player to go collect the star
+      console.log(
+        'Display a message to tell the player to go collect the star'
+        //scene.launch
+        //scene.start
+      );
+    }
+  }
+
+  collectStar(yoo: YooSprite, star: StarSprite) {
+    // console.log(star);
+    star.destroy();
+    this.starCollected = true;
   }
 
   update() {

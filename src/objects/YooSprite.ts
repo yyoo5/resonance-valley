@@ -36,6 +36,7 @@ export default class YooSprite extends Phaser.Physics.Arcade.Sprite {
 
     if (this.cursors.up.isDown && this.body.blocked.down) {
       this.setVelocityY(-240);
+      this.scene.sound.play('jump');
     }
   }
 
