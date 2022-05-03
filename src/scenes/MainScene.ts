@@ -2,7 +2,7 @@ import { Tilemaps } from 'phaser';
 import EnemySprite from '../objects/EnemySprite';
 import YooSprite from '../objects/YooSprite';
 import StarSprite from '../objects/StarSprite';
-import SettingsScene from './SettingsScene';
+// import SettingsScene from './SettingsScene';
 
 export default class MainScene extends Phaser.Scene {
   private yoo!: YooSprite;
@@ -19,7 +19,6 @@ export default class MainScene extends Phaser.Scene {
 
   create() {
     this.add.image(400, 320, 'background');
-    this.add.image(200, 200, 'vision');
 
     this.scene.launch('SettingsScene');
 
@@ -74,7 +73,7 @@ export default class MainScene extends Phaser.Scene {
 
     //Add Camera and zoom
     this.cameras.main.startFollow(this.yoo, true);
-    this.cameras.main.zoom = 2.0;
+    this.cameras.main.zoom = 1.5;
 
     //add sound effect
   }

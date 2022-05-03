@@ -6,6 +6,7 @@ import MainScene from './scenes/MainScene';
 import PreloaderScene from './scenes/PreloaderScene';
 import ControlScene from './scenes/ControlScene';
 import SettingsScene from './scenes/SettingsScene';
+import ControlSceneContinued from './scenes/StorySceneContinued';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -15,7 +16,7 @@ const config: Phaser.Types.Core.GameConfig = {
     default: 'arcade',
     arcade: {
       gravity: { y: 200, x: 0 },
-      debug: true,
+      debug: false,
     },
   },
   scene: [
@@ -23,6 +24,7 @@ const config: Phaser.Types.Core.GameConfig = {
     MenuScene,
     StoryScene,
     ControlScene,
+    ControlSceneContinued,
     CreditScene,
     MainScene,
     SettingsScene,

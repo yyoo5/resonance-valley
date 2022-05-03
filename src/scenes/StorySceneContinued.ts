@@ -1,6 +1,6 @@
-export default class StoryScene extends Phaser.Scene {
+export default class StorySceneContinued extends Phaser.Scene {
   constructor() {
-    super({ key: 'StoryScene' });
+    super({ key: 'StorySceneContinued' });
   }
 
   init() {}
@@ -12,7 +12,7 @@ export default class StoryScene extends Phaser.Scene {
       .image(
         this.game.renderer.width / 2,
         this.game.renderer.height / 2,
-        'story'
+        'story-2'
       )
       .setDepth(1);
     let nextButton = this.add
@@ -38,7 +38,7 @@ export default class StoryScene extends Phaser.Scene {
     });
 
     nextButton.on('pointerup', () => {
-      this.scene.start('StorySceneContinued');
+      this.scene.start('ControlScene');
     });
 
     nextButton.on('pointerdown', () => {});
