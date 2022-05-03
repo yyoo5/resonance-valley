@@ -38,7 +38,7 @@ export default class LevelOneComplete extends Phaser.Scene {
     });
 
     nextButton.on('pointerup', () => {
-      this.scene.start('ControlScene');
+      this.scene.start('LevelTwo');
     });
 
     nextButton.on('pointerdown', () => {});
