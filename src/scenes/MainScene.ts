@@ -10,7 +10,6 @@ export default class MainScene extends Phaser.Scene {
   private enemy1!: EnemySprite;
   private star!: StarSprite;
   vision!: Phaser.GameObjects.Image;
-  visionstar!: Phaser.GameObjects.Image;
   starCollected: boolean = false;
 
   constructor() {
@@ -93,13 +92,9 @@ export default class MainScene extends Phaser.Scene {
     if (this.starCollected === true) {
       // TODO: Display you won
       console.log('Display you won');
+      this.scene.start('LevelOneComplete');
     } else {
       // TODO: Display a message to tell the player to go collect the star
-      console.log(
-        'Display a message to tell the player to go collect the star'
-        //scene.launch
-        //scene.start
-      );
     }
   }
 
