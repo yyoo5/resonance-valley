@@ -10,6 +10,7 @@ import ControlSceneContinued from './scenes/StorySceneContinued';
 import LevelOneComplete from './scenes/LevelOneComplete';
 import LevelTwo from './scenes/LevelTwo';
 import LvlTwoChallenge from './scenes/LvlTwoChallenge';
+import SoonToCome from './scenes/SoonToCome';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -34,6 +35,7 @@ const config: Phaser.Types.Core.GameConfig = {
     LvlTwoChallenge,
     LevelTwo,
     SettingsScene,
+    SoonToCome,
   ],
   render: {
     pixelArt: true,

@@ -65,34 +65,34 @@ export default class LevelTwo extends Phaser.Scene {
       this
     );
 
-    // const width = this.scale.width;
-    // const height = this.scale.height;
+    const width = this.scale.width;
+    const height = this.scale.height;
 
-    // //add fog of war
-    // const rt = this.make.renderTexture({ width, height }, true);
-    // rt.fill(0x000000, 1);
+    //add fog of war
+    const rt = this.make.renderTexture({ width, height }, true);
+    rt.fill(0x000000, 1);
 
-    // this.vision = this.make.image({
-    //   x: this.yoo.x,
-    //   y: this.yoo.y,
-    //   key: 'vision',
-    //   add: false,
-    // });
-    // this.vision.scale = 1.5;
+    this.vision = this.make.image({
+      x: this.yoo.x,
+      y: this.yoo.y,
+      key: 'vision',
+      add: false,
+    });
+    this.vision.scale = 1.5;
 
-    // rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision);
-    // rt.mask.invertAlpha = true;
+    rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision);
+    rt.mask.invertAlpha = true;
 
-    // //Add Camera and zoom
-    // this.cameras.main.startFollow(this.yoo, true);
-    // this.cameras.main.zoom = 2;
+    //Add Camera and zoom
+    this.cameras.main.startFollow(this.yoo, true);
+    this.cameras.main.zoom = 2;
 
     //add sound effect
   }
   touchEnemy(_yoo: YooSprite, _enemy1: EnemySprite) {
     if (this.starCollected === true) {
       console.log('Display you won');
-      this.scene.start('LevelOneComplete');
+      this.scene.start('CreditScene');
     } else {
     }
   }

@@ -1,6 +1,6 @@
-export default class LevelOneComplete extends Phaser.Scene {
+export default class SoonToCome extends Phaser.Scene {
   constructor() {
-    super({ key: 'LevelOneComplete' });
+    super({ key: 'SoonToCome' });
   }
 
   init() {}
@@ -12,14 +12,14 @@ export default class LevelOneComplete extends Phaser.Scene {
       .image(
         this.game.renderer.width / 2,
         this.game.renderer.height / 2,
-        'level-1-complete'
+        'thankyou'
       )
       .setDepth(1);
     let nextButton = this.add
       .image(
         this.game.renderer.width / 2,
         this.game.renderer.height / 1.1,
-        'next'
+        'home'
       )
       .setDepth(0);
 
@@ -38,7 +38,7 @@ export default class LevelOneComplete extends Phaser.Scene {
     });
 
     nextButton.on('pointerup', () => {
-      this.scene.start('LvlTwoChallenge');
+      this.scene.start('MenuScene');
     });
 
     nextButton.on('pointerdown', () => {});
