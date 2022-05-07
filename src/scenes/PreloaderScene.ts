@@ -27,6 +27,7 @@ export default class PreloaderScene extends Phaser.Scene {
       'level-1-complete',
       'assets/img/title/level-1-complete.png'
     );
+    this.load.image('lvl2intro', 'assets/img/title/level-2-intro.png');
 
     this.load.audio('background-music', 'assets/audio/bgm.mp3');
     this.load.audio('jump', 'assets/audio/jump.wav');

@@ -35,10 +35,10 @@ export default class LevelTwo extends Phaser.Scene {
     this.platforms.setCollisionByProperty({ collides: true });
 
     // Add main character and animation
-    this.yoo = new YooSprite(this, 500, 600);
+    this.yoo = new YooSprite(this, 750, 600);
 
     // Add Eliou
-    this.enemy1 = new EnemySprite(this, 725, 300, 'ghuds');
+    this.enemy1 = new EnemySprite(this, 725, 400, 'ghuds');
     this.enemy1.body.setSize(this.enemy1.width * 0.8, this.enemy1.height * 0.8);
 
     // Add Star

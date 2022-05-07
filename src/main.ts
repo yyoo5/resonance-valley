@@ -9,6 +9,7 @@ import SettingsScene from './scenes/SettingsScene';
 import ControlSceneContinued from './scenes/StorySceneContinued';
 import LevelOneComplete from './scenes/LevelOneComplete';
 import LevelTwo from './scenes/LevelTwo';
+import LvlTwoChallenge from './scenes/LvlTwoChallenge';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -30,6 +31,7 @@ const config: Phaser.Types.Core.GameConfig = {
     CreditScene,
     MainScene,
     LevelOneComplete,
+    LvlTwoChallenge,
     LevelTwo,
     SettingsScene,
   ],
