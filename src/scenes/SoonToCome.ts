@@ -38,7 +38,7 @@ export default class SoonToCome extends Phaser.Scene {
     });
 
     nextButton.on('pointerup', () => {
-      this.scene.start('MenuScene');
+      this.scene.start('CreditScene');
     });
 
     nextButton.on('pointerdown', () => {});

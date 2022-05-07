@@ -92,7 +92,7 @@ export default class LevelTwo extends Phaser.Scene {
   touchEnemy(_yoo: YooSprite, _enemy1: EnemySprite) {
     if (this.starCollected === true) {
       console.log('Display you won');
-      this.scene.start('CreditScene');
+      this.scene.start('SoonToCome');
     } else {
     }
   }
