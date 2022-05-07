@@ -2,7 +2,6 @@ import { Tilemaps } from 'phaser';
 import EnemySprite from '../objects/EnemySprite';
 import YooSprite from '../objects/YooSprite';
 import StarSprite from '../objects/StarSprite';
-// import SettingsScene from './SettingsScene';
 
 export default class MainScene extends Phaser.Scene {
   private yoo!: YooSprite;
@@ -88,17 +87,15 @@ export default class MainScene extends Phaser.Scene {
 
     //add sound effect
   }
-  touchEnemy(yoo: YooSprite, enemy1: EnemySprite) {
+  touchEnemy(_yoo: YooSprite, _enemy1: EnemySprite) {
     if (this.starCollected === true) {
-      // TODO: Display you won
       console.log('Display you won');
       this.scene.start('LevelOneComplete');
     } else {
-      // TODO: Display a message to tell the player to go collect the star
     }
   }
 
-  collectStar(yoo: YooSprite, star: StarSprite) {
+  collectStar(_yoo: YooSprite, star: StarSprite) {
     // console.log(star);
     star.destroy();
     this.starCollected = true;

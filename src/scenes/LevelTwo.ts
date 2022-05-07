@@ -2,7 +2,6 @@ import { Tilemaps } from 'phaser';
 import EnemySprite from '../objects/EnemySprite';
 import YooSprite from '../objects/YooSprite';
 import StarSprite from '../objects/StarSprite';
-// import SettingsScene from './SettingsScene';
 
 export default class LevelTwo extends Phaser.Scene {
   private yoo!: YooSprite;
@@ -16,14 +15,16 @@ export default class LevelTwo extends Phaser.Scene {
     super({ key: 'LevelTwo' });
   }
 
-  preload() {}
+  preload() {
+    this.load.tilemapTiledJSON('level-2', 'assets/img/tiles/level-2.json');
+  }
 
   create() {
     this.add.image(400, 320, 'background');
 
     this.scene.launch('SettingsScene');
 
-    const map = this.make.tilemap({ key: 'level-1' });
+    const map = this.make.tilemap({ key: 'level-2' });
     const tileset = map.addTilesetImage('tileset', 'tiles', 32, 32, 0, 0);
     this.platforms = map.createLayer('platforms', tileset);
 
@@ -34,7 +35,7 @@ export default class LevelTwo extends Phaser.Scene {
     this.platforms.setCollisionByProperty({ collides: true });
 
     // Add main character and animation
-    this.yoo = new YooSprite(this, 200, 600);
+    this.yoo = new YooSprite(this, 500, 600);
 
     // Add Eliou
     this.enemy1 = new EnemySprite(this, 700, 300, 'eliou');
@@ -64,23 +65,23 @@ export default class LevelTwo extends Phaser.Scene {
       this
     );
 
-    // const width = this.scale.width;
-    // const height = this.scale.height;
+    const width = this.scale.width;
+    const height = this.scale.height;
 
-    // //add fog of war
-    // const rt = this.make.renderTexture({ width, height }, true);
-    // rt.fill(0x000000, 1);
+    //add fog of war
+    const rt = this.make.renderTexture({ width, height }, true);
+    rt.fill(0x000000, 1);
 
-    // this.vision = this.make.image({
-    //   x: this.yoo.x,
-    //   y: this.yoo.y,
-    //   key: 'vision',
-    //   add: false,
-    // });
-    // this.vision.scale = 1.5;
+    this.vision = this.make.image({
+      x: this.yoo.x,
+      y: this.yoo.y,
+      key: 'vision',
+      add: false,
+    });
+    this.vision.scale = 1.5;
 
-    // rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision);
-    // rt.mask.invertAlpha = true;
+    rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision);
+    rt.mask.invertAlpha = true;
 
     //Add Camera and zoom
     this.cameras.main.startFollow(this.yoo, true);
@@ -88,17 +89,15 @@ export default class LevelTwo extends Phaser.Scene {
 
     //add sound effect
   }
-  touchEnemy(yoo: YooSprite, enemy1: EnemySprite) {
+  touchEnemy(_yoo: YooSprite, _enemy1: EnemySprite) {
     if (this.starCollected === true) {
-      // TODO: Display you won
       console.log('Display you won');
       this.scene.start('LevelOneComplete');
     } else {
-      // TODO: Display a message to tell the player to go collect the star
     }
   }
 
-  collectStar(yoo: YooSprite, star: StarSprite) {
+  collectStar(_yoo: YooSprite, star: StarSprite) {
     // console.log(star);
     star.destroy();
     this.starCollected = true;

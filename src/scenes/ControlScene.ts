@@ -39,6 +39,7 @@ export default class ControlScene extends Phaser.Scene {
 
     nextButton.on('pointerup', () => {
       this.scene.start('MainScene');
+      //change back to 'MainScene'
     });
 
     nextButton.on('pointerdown', () => {});
