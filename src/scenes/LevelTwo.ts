@@ -38,11 +38,11 @@ export default class LevelTwo extends Phaser.Scene {
     this.yoo = new YooSprite(this, 500, 600);
 
     // Add Eliou
-    this.enemy1 = new EnemySprite(this, 700, 300, 'eliou');
+    this.enemy1 = new EnemySprite(this, 725, 300, 'ghuds');
     this.enemy1.body.setSize(this.enemy1.width * 0.8, this.enemy1.height * 0.8);
 
     // Add Star
-    this.star = new StarSprite(this, 200, 80, 'star');
+    this.star = new StarSprite(this, 50, 40, 'star');
 
     //add music
     this.sound.play('background-music', {
@@ -65,27 +65,27 @@ export default class LevelTwo extends Phaser.Scene {
       this
     );
 
-    const width = this.scale.width;
-    const height = this.scale.height;
+    // const width = this.scale.width;
+    // const height = this.scale.height;
 
-    //add fog of war
-    const rt = this.make.renderTexture({ width, height }, true);
-    rt.fill(0x000000, 1);
+    // //add fog of war
+    // const rt = this.make.renderTexture({ width, height }, true);
+    // rt.fill(0x000000, 1);
 
-    this.vision = this.make.image({
-      x: this.yoo.x,
-      y: this.yoo.y,
-      key: 'vision',
-      add: false,
-    });
-    this.vision.scale = 1.5;
+    // this.vision = this.make.image({
+    //   x: this.yoo.x,
+    //   y: this.yoo.y,
+    //   key: 'vision',
+    //   add: false,
+    // });
+    // this.vision.scale = 1.5;
 
-    rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision);
-    rt.mask.invertAlpha = true;
+    // rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision);
+    // rt.mask.invertAlpha = true;
 
-    //Add Camera and zoom
-    this.cameras.main.startFollow(this.yoo, true);
-    this.cameras.main.zoom = 1.5;
+    // //Add Camera and zoom
+    // this.cameras.main.startFollow(this.yoo, true);
+    // this.cameras.main.zoom = 2;
 
     //add sound effect
   }

@@ -83,7 +83,7 @@ export default class MainScene extends Phaser.Scene {
 
     //Add Camera and zoom
     this.cameras.main.startFollow(this.yoo, true);
-    this.cameras.main.zoom = 1.5;
+    // this.cameras.main.zoom = 1.5;
 
     //add sound effect
   }
